@@ -17,7 +17,7 @@
         <div class="container">
             <div class="jumbotron mt-4">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="inputAmount" placeholder="Amount spent" aria-label="Amount spent" aria-describedby="spent in rupee"/>
+                    <input type="number" class="form-control" id="inputAmount" placeholder="Amount spent" aria-label="Amount spent" aria-describedby="spent in rupee"/>
                     <div class="input-group-append">
                         <span class="input-group-text" id="spent in rupee">₹</span>
                     </div>
@@ -89,7 +89,7 @@
             totalExpense = totalExpense + expense;
             
             // set the heading element to totalExpense
-            const someText = `Total: ${totalExpense}`
+            const someText = `Total Expense: ${totalExpense}`
             headingEl.textContent = someText;
 
 
@@ -117,6 +117,11 @@
         function deleteItem(dateValue) {
 
             let newArr = allExpenses.filter(expense => expense.moment.valueOf() !== dateValue)
+            const newAmount = allExpenses.filter(expense => expense.moment.valueOf() === dateValue)
+            let amountObject = newAmount[0]
+            let mad = Object.values(amountObject);
+            const someText = `Total Expense: ${totalExpense - mad[1]}`
+            headingEl.textContent = someText;
             allExpenses = newArr;
             renderList(allExpenses);
         }
