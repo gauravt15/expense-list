@@ -121,6 +121,7 @@
             let amountObject = newAmount[0]
             let mad = Object.values(amountObject);
             const someText = `Total Expense: ${totalExpense - mad[1]}`
+	    totalExpense = totalExpense - mad[1];
             headingEl.textContent = someText;
             allExpenses = newArr;
             renderList(allExpenses);
